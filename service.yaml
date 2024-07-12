@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}-service
   labels:
-    app: my-web-app
+    app: {{ .Release.Name }}
 spec:
   selector:
     project: {{ .Release.Name }}
