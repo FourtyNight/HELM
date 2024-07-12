@@ -8,14 +8,14 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      project: {{ .Release.Name}}
+      project: {{ .Release.Name }}-deployment
   template:
     metadata:
       labels:
-        project: {{ .Release.Name}}
+        project: {{ .Release.Name }}-deployment
     spec:
       containers:
-        - name: {{ .Release.Name}}-webapp
-          image: {{ .Values.conatiner.image }}
+        - name: {{ .Release.Name }}-webapp
+          image: {{ .Values.container.image }}
           ports:
             - containerPort: 80
