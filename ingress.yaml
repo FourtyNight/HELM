@@ -1,12 +1,16 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
-metadata: {{ .Release.Name }}-ingress
-
+metadata:
+  name: {{ .Release.Name }}-ingress
 spec:
   rules:
   - host: www.myweb.net
     http:
-      path:
-        -backend:
-          serviceName: main
-          servicePort: 80
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: main
+              port:
+                number: 80
